@@ -118,11 +118,27 @@ function multiplicarArgumentos() {
    // Si no se pasan argumentos retorna 0. Si se pasa un argumento, simplemente retórnalo.
    // [PISTA]: "arguments" es un arreglo.
    // Tu código:
+
+   if (arguments.length === 0){
+      return 0;
+   }
+   var producto = 1;
+   for (var i = 0; i<arguments.length; i++){
+      producto *= arguments[i];
+   }
+   return producto;
 }
 
 function cuentoElementos(array) {
    // Desarrolla una función que retorne la cantidad de elementos del arreglo cuyo valor sea mayor que 18.
    // Tu código:
+   numerosMayor = 0;
+   for(var i = 0; i<array.length; i++){
+      if (array[i] > 18){
+         numerosMayor++;
+      }
+   }
+   return numerosMayor;
 }
 
 function diaDeLaSemana(numeroDeDia) {
@@ -130,18 +146,40 @@ function diaDeLaSemana(numeroDeDia) {
    // Realiza una función que, dado el número del día de la semana, retorne: "Es fin de semana"
    // si el día corresponde a "Sábado" o "Domingo", y "Es dia laboral" en caso contrario.
    // Tu código:
+   
+      if (numeroDeDia === 1 || numeroDeDia === 7){
+         return "Es fin de semana";
+      }else return "Es dia laboral";
+   
 }
 
 function empiezaConNueve(num) {
    // Esta función recibe por parámetro un número.
    // Debe retornar true si el entero inicia con 9 y false en otro caso.
    // Tu código:
+   var array = num.toString().split("");
+   if (array[0]==="9"){
+      return true
+   }else return false;
+
 }
 
 function todosIguales(array) {
    // Si todos los elementos del arreglo son iguales, retornar true.
    // Caso contrario retornar false.
    // Tu código:
+   
+   const primerElemento = array[0];
+
+   for ( let i = 0; i < array.length; i++){
+
+      if (array[i] !== primerElemento){
+
+         return false;
+      } 
+      
+   }
+   return true;
 }
 
 function mesesDelAño(array) {
@@ -149,18 +187,47 @@ function mesesDelAño(array) {
    // "Marzo" y "Noviembre", guardarlos en un nuevo arreglo y retornarlo.
    // Si alguno de los meses no está, retornar el string: "No se encontraron los meses pedidos".
    // Tu código:
+
+   let mesesPedidos = [];
+   for (let i = 0; i < array.length; i++){
+      if(array[i] === "Enero" || array[i]==="Marzo" || array[i] ==="Noviembre"){
+         mesesPedidos.push(array[i]);
+         }
+      }  
+   if (mesesPedidos.length !== 3) {
+      return "No se encontraron los meses pedidos";
+   }
+   return mesesPedidos;
+
+
 }
 
 function tablaDelSeis() {
    // Escribe una función que muestre la tabla de multiplicar del 6 (del 0 al 60).
    // La función devuelve un arreglo con los resultados de la tabla de multiplicar del 6 en orden creciente.
    // Tu código:
+
+   let arrayResultado = [];
+   for (let i = 0; i <= 10; i++ ){
+      arrayResultado.push(i*6);
+   }
+   return arrayResultado;
+
 }
 
 function mayorACien(array) {
    // La función recibe un arreglo con enteros entre 0 y 200.
    // Recorrerlo y retornar un arreglo con todos los valores mayores a 100 (no incluye el 100).
    // Tu código:
+
+   let arrayMayorCien = [];
+   for(let i = 0; i < array.length;i++){
+      if (array[i] > 100){
+         arrayMayorCien.push(array[i])
+      }
+      
+   }return arrayMayorCien;
+
 }
 
 /* ----------------------------------------------------------------------------------
@@ -174,6 +241,16 @@ function breakStatement(num) {
    // la ejecución y retornar el string: "Se interrumpió la ejecución".
    // [PISTA]: utiliza el statement 'break'.
    // Tu código:
+
+   let array = [];
+   for (let i = 1; i<= 10; i++){
+       num += 2;
+       array.push(num);
+       if (num === i) {
+           return "Se interrumpió la ejecución";
+       }
+
+   }return array;
 }
 
 function continueStatement(num) {
@@ -183,6 +260,15 @@ function continueStatement(num) {
    // se continua con la siguiente iteración.
    // [PISTA]: utiliza el statement 'continue'.
    // Tu código:
+let array = [];
+for(let i = 0; i < 10; i++){
+   if(i ===5){
+      continue;
+   }
+   num +=2;
+   array.push(num);
+}return array;
+
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
@@ -208,4 +294,4 @@ module.exports = {
    mayorACien,
    breakStatement,
    continueStatement,
-};
+}
